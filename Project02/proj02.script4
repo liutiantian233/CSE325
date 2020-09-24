@@ -1,0 +1,32 @@
+#!/bin/tcsh -f
+#echo is print new line
+echo
+#if statement to find invalid number
+if ($# != 2) then
+echo "an invalid number of arguments\n"
+exit
+endif
+#if statement to find invalid value
+if ($argv[1] <= 0) then
+echo "an invalid value as the second token\n"
+exit
+endif
+#if statement to find invalid character
+if ($argv[2] != "A" && $argv[2] != "C" && $argv[2] != "T") then
+echo "an invalid character string as the third token\n"
+exit
+endif
+echo "data table\n"
+#input the headers
+cat /user/cse325/Projects/project02.headers
+#if statement to find which need
+if ($argv[2] == "A") then
+cat /user/cse325/Projects/project02.data |sort -t'|' -k3nr -k1 |head -$argv[1]
+endif
+if ($argv[2] == "C") then
+cat /user/cse325/Projects/project02.data |sort -t'|' -k3nr -k1 |grep "city" |head -$argv[1]
+endif
+if ($argv[2] == "T") then
+cat /user/cse325/Projects/project02.data |sort -t'|' -k3nr -k1 |grep "township" |head -$argv[1]
+endif
+echo

@@ -1,0 +1,17 @@
+#!/bin/tcsh -f
+#echo is print new line
+echo
+echo "data table\n"
+#input the headers
+cat /user/cse325/Projects/project02.headers
+#if statement to find which need
+if ($argv[2] == "A") then
+cat /user/cse325/Projects/project02.data |sort -t'|' -k3nr -k1 |head -$argv[1]
+endif
+if ($argv[2] == "C") then
+cat /user/cse325/Projects/project02.data |sort -t'|' -k3nr -k1 |grep "city" |head -$argv[1]
+endif
+if ($argv[2] == "T") then
+cat /user/cse325/Projects/project02.data |sort -t'|' -k3nr -k1 |grep "township" |head -$argv[1]
+endif
+echo

@@ -1,0 +1,8 @@
+#!/bin/tcsh -f
+echo
+echo $argv[1] "data table\n"
+#input the headers
+cat /user/cse325/Projects/project02.headers
+#use the grep to find which word to sort then sort
+cat /user/cse325/Projects/project02.data |grep "| $argv[1]" |sort -t'|' -k3n -k1
+echo
